@@ -2,7 +2,11 @@
 import './App.css';
 import React, { useState } from 'react'
 
-const dictionary = 
+
+
+function App() {
+
+  const dictionary = 
   [
   
       { word: "React", meaning: "A JavaScript library for building user interfaces." },
@@ -13,8 +17,6 @@ const dictionary =
   
   ];
   
-
-function App() {
   const[searchItem, setSearchItem] = useState('');
   const[definition, setDefinition] = useState('');
 
@@ -24,10 +26,13 @@ function App() {
   }
   return (
     <div>
-      <input type  = 'text' name = 'search' id = 'search' value = {searchItem} onChange={(e) =>setSearchItem(e.target.value)}/>
+      <h1>Dictionary App</h1>
+      <input type  = 'text' placeholder='Search for a word...' value = {searchItem} onChange={(e) =>setSearchItem(e.target.value)}/>
       <button onClick = {handleSearch}>Search</button>
-      <h3>Definition: </h3>
-      <p>{definition}</p>
+      {definition && <div>
+        <h3>Definition: </h3>
+        <p>{definition}</p>
+        </div>}
     </div>
   );
 }
